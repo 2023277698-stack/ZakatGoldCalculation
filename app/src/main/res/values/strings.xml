@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ZakatGoldCalculator</string>
+    <string name="copyright">Copyright © 2025 Firas</string>
+    <string name="about_text">This is a simple demo application to demonstrate the use of Menu in Android Mobile Application</string>
+</resources>
