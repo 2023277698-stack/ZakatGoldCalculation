@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ZakatGoldCalculator</string>
     <string name="copyright">Copyright © 2025 Firas</string>
-    <string name="about_text">This is a simple demo application to demonstrate the use of Menu in Android Mobile Application</string>
+    <string name="about_text">MUHAMMAD FIRAS HAIMAN BIN TAHA 2023277698 </string>
+    <string name="about_text2">CDCS2405B</string>
+    <string name="url">https://github.com/2023277698-stack/ZakatGoldCalculation</string>
 </resources>

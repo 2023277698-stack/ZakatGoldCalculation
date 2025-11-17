@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
 
-        String url = "https://github.com/yourusername/ZakatGoldCalculator";
+        String url = "https://github.com/2023277698-stack/ZakatGoldCalculation";
         shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out my Zakat Calculator App: " + url);
 
         startActivity(Intent.createChooser(shareIntent, "Share via"));

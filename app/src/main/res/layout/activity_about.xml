@@ -9,6 +9,33 @@
     tools:context=".AboutActivity">
 
     <!-- App Icon -->
+
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="86dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text="https://github.com/2023277698-stack/ZakatGoldCalculation"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="64dp"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:text="@string/about_text2"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="120dp"
@@ -57,13 +84,13 @@
         android:paddingHorizontal="16dp" />
 
     <!-- Back Button -->
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_below="@id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="22dp"
+        android:text="Back" />
 
 </RelativeLayout>
