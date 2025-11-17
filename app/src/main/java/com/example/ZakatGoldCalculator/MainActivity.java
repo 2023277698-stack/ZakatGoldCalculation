@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -20,6 +19,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText etWeight, etGoldValue;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rbKeep, rbWear;
     TextView totValue, payValue, totZakat;
     Button btnCalculate, btnReset;
+
+    DecimalFormat df = new DecimalFormat("#0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,19 +89,17 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // Check if weight is numeric
+        // Check if numeric
         if (!weightStr.matches("\\d+(\\.\\d+)?")) {
             Toast.makeText(this, "Weight must be a VALID number!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Check if gold price is numeric
         if (!goldStr.matches("\\d+(\\.\\d+)?")) {
             Toast.makeText(this, "Gold price must be a VALID number!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Convert string -> number after validation
         double weight = Double.parseDouble(weightStr);
         double goldValue = Double.parseDouble(goldStr);
 
@@ -108,18 +109,20 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        // Uruf selection
         double uruf = (selectedId == R.id.keep) ? 85 : 200;
 
+        // Calculations
         double totalValue = weight * goldValue;
         double excessGold = weight - uruf;
         double zakatPayableValue = (excessGold > 0) ? excessGold * goldValue : 0;
         double totalZakatAmount = zakatPayableValue * 0.025;
 
-        totValue.setText("Total Value: RM " + totalValue);
-        payValue.setText("Zakat Payable Value: RM " + zakatPayableValue);
-        totZakat.setText("Total Zakat Value: RM " + totalZakatAmount);
+        // Display results (formatted)
+        totValue.setText("Total Value: RM " + df.format(totalValue));
+        payValue.setText("Zakat Payable Value: RM " + df.format(zakatPayableValue));
+        totZakat.setText("Total Zakat Value: RM " + df.format(totalZakatAmount));
     }
-
 
     private void resetAll() {
         etWeight.setText("");
