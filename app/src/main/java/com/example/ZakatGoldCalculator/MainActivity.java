@@ -71,32 +71,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculateZakat() {
-        try {
-            double weight = Double.parseDouble(etWeight.getText().toString());
-            double goldValue = Double.parseDouble(etGoldValue.getText().toString());
 
-            int selectedId = radioGroupType.getCheckedRadioButtonId();
-            if (selectedId == -1) {
-                Toast.makeText(this, "Please select Keep or Wear", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        String weightStr = etWeight.getText().toString().trim();
+        String goldStr = etGoldValue.getText().toString().trim();
 
-            double uruf = (selectedId == R.id.keep) ? 85 : 200;
-
-            double totalValue = weight * goldValue;
-            double excessGold = weight - uruf;
-
-            double zakatPayableValue = (excessGold > 0) ? excessGold * goldValue : 0;
-            double totalZakatAmount = zakatPayableValue * 0.025;
-
-            totValue.setText("Total Value: RM " + totalValue);
-            payValue.setText("Zakat Payable Value: RM " + zakatPayableValue);
-            totZakat.setText("Total Zakat Value: RM " + totalZakatAmount);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Please enter valid numbers!", Toast.LENGTH_SHORT).show();
+        // Check empty fields individually
+        if (weightStr.isEmpty()) {
+            Toast.makeText(this, "Please enter the gold weight!", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        if (goldStr.isEmpty()) {
+            Toast.makeText(this, "Please enter the gold price per gram!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if weight is numeric
+        if (!weightStr.matches("\\d+(\\.\\d+)?")) {
+            Toast.makeText(this, "Weight must be a VALID number!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if gold price is numeric
+        if (!goldStr.matches("\\d+(\\.\\d+)?")) {
+            Toast.makeText(this, "Gold price must be a VALID number!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Convert string -> number after validation
+        double weight = Double.parseDouble(weightStr);
+        double goldValue = Double.parseDouble(goldStr);
+
+        int selectedId = radioGroupType.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            Toast.makeText(this, "Please select Keep or Wear", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double uruf = (selectedId == R.id.keep) ? 85 : 200;
+
+        double totalValue = weight * goldValue;
+        double excessGold = weight - uruf;
+        double zakatPayableValue = (excessGold > 0) ? excessGold * goldValue : 0;
+        double totalZakatAmount = zakatPayableValue * 0.025;
+
+        totValue.setText("Total Value: RM " + totalValue);
+        payValue.setText("Zakat Payable Value: RM " + zakatPayableValue);
+        totZakat.setText("Total Zakat Value: RM " + totalZakatAmount);
     }
+
 
     private void resetAll() {
         etWeight.setText("");

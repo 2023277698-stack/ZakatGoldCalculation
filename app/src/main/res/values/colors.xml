@@ -3,9 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!-- Gold Theme Colors -->
-    <color name="my_light_primary">#FFD700</color>          <!-- Gold -->
+    <color name="my_light_primary">#6E5415</color>          <!-- Gold -->
     <color name="my_light_primaryDark">#B8860B</color>      <!-- Dark Gold / Brown -->
     <color name="my_light_textcolor">#FF000000</color>     <!-- Black text on light background -->
     <color name="my_dark_textcolor">#FFFFFFFF</color>      <!-- White text on dark background -->
-    <color name="my_dark_primary">#FFD700</color>          <!-- Use gold in dark mode if needed -->
+    <color name="my_dark_primary">#6E5415</color>          <!-- Use gold in dark mode if needed -->
 </resources>
